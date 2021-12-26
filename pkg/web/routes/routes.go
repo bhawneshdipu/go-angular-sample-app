@@ -1,11 +1,13 @@
 package routes
 
 import (
+	config "github.com/bhawneshdipu/go-angular-sample-app/pkg/conf"
 	"github.com/bhawneshdipu/go-angular-sample-app/pkg/web/handler"
 	"github.com/labstack/echo/v4"
 )
 
-func Routes() *echo.Echo {
+func Routes(config *config.AppConfig) *echo.Echo {
+	handler.AppConfig = config
 	e := echo.New()
 	e.GET("/", handler.Index)
 	e.GET("/users/:id", handler.GetUser)
